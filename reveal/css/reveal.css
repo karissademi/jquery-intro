@@ -102,8 +102,6 @@ body {
 .yellow{color:#EDAB23}
 .pink{color:#F05B62}
 .red{color:#8B0036}
-.orange{color:orange;}
-.code{font-family:Courier,serif !important;}
 
 /*********************************************
  * HEADERS
@@ -1216,8 +1214,4 @@ body {
 	visibility: hidden;
 }
 
-.reveal .small {
-	color: #ccc;
-	font-size:80%;
-}
 

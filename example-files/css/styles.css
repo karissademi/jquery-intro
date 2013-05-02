@@ -1,0 +1,56 @@
+/*do a little resetting */
+*{
+  margin:0;
+  padding:0;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  background:#ccc;
+}
+h1, h2{padding:10px 0;}
+header{
+  /*make sure older browsers are happy*/
+  display:block;
+}
+
+p{
+  color:#fff;
+  padding:10px 0;
+}
+.wrap{
+  width:960px;
+  overflow: auto;
+  background: #afafaf;
+  margin:0 auto;
+  padding:20px;
+}
+hr{clear:both;
+margin:10px;}
+
+.error {
+  color:red;
+  background:yellow;
+}
+
+.img-border{
+  border:4px solid #000;
+  margin:10px;
+  width:25%;
+  height:auto;
+}
+
+.float-left{
+  float:left;
+  padding: 0 10px 0 10px;
+}
+.show, .hide{
+  cursor:pointer;
+  background:#000;
+  border:1px solid orange;
+  padding:5px;
+  width:150px;
+  text-align: center;
+  color:#fff;
+}

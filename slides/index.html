@@ -254,13 +254,15 @@
                     </section>
       <section>
         <h3>Where to put our code</h3>
-        <p>Just like CSS, we can separate our Javascript from the HTML page.</p>
+        <p>Just like CSS, we can and should separate Javascript from the HTML page.</p>
         <p>However, just like internal CSS files, we can have internal JS files.</p>
+        <p class="fragment">This goes in the &lt;head> and is the equivalent of an internal CSS file.</p>
         <pre><code class="javascript">
           <span class="green">&lt;script></span>//Javascript goes here! <span class="green">&lt;/script></span>
         </code></pre>
+        <p class="fragment">This points to an external JS file.</p>
          <pre><code class="javascript">
-          &lt;script src="js/custom.js">&lt;/script>
+          <span class="green">&lt;script src="js/custom.js">&lt;/script></span>
         </code></pre>
       </section>
 
@@ -279,7 +281,7 @@
             <pre><code contenteditable class = "javascript">$("div"); //All div tags</code></pre>
             </li>
               <li class = "fragment"><span class="green">ID name</span> (#results, #container)
-              <pre><code contenteditable class = "javascript">$("#main"); //All elements with id="main".
+              <pre><code contenteditable class = "javascript">$("#content"); //All elements with id="content".
               </code></pre>
               </li>
               <li class = "fragment"><span class="green">Class name</span> (.error, .wrap)
@@ -287,6 +289,20 @@
               </code></pre> 
               </li>
             </ul>
+        </section>
+        <section>
+          <h3>jQuery Selectors vs. Javascript Selector</h3>
+          <p class = "fragment"> Lets say you wanted to get an element by it's tag name using Javascript. It would look something like this: </p>
+            <div class="fragment"><pre><code contenteditable class = "javascript">               
+<span class="green">getElementsByTagName</span> (div).style.color = "red";
+
+</code></pre>
+            </div>
+              <div class="fragment">In jQuery that looks like this:
+              <pre><code contenteditable class = "javascript"> 
+ <span class="green">$("div")</span>.css("color","red");
+              </code></pre>  
+            </div>
         </section>
 
 
@@ -327,7 +343,7 @@
               <li>Each line in JavaScript is an instruction, aka a <span class="green">statement</span></li>
               <li>When the browser reads it, it "executes the script"</li>
               <br>
-              <li>Type the following into the first set of open  <span class="green">&lt;script></span> tags.
+              <li>Type the following into custom.js file.
               </li>
             </ul>
             <pre><code contenteditable class ="javascript">
@@ -400,14 +416,14 @@
                     <h3>Back to Selectors - Using the Class Selector</h3>
                     <ul>
                       <li>Go back to your example HTML page.</li>
-                      <li>Let's select all the images with the class <span class="green">picture</span> by entering the following code in the JavaScript window. 
+                      <li>Let's select all the images with the class <span class="green">main</span> by entering the following code in your custom.js file.
                       </li>
-                      <pre><code contenteditable class = "javascript">$(".picture");
+                      <pre><code contenteditable class = "javascript">$(".main");
 </code></pre>
-   <li>Next, we'll use jQuery's <span class="green">addClass()</span> to add the class <span class="green">pic-border</span> to all the matched elements.
-     <ul><li>The CSS has previously defined the class <span class="green">pic-border</span> to apply a 5px black border</li></ul> 
+   <li>Next, we'll use jQuery's <span class="green">addClass()</span> to add the class <span class="green">img-border</span> to all the matched elements.
+     <ul><li>The CSS has previously defined the class <span class="green">img-border</span> to apply a 5px black border</li></ul> 
     </li>
-    <pre><code contenteditable class = "javascript"> $(".picture").addClass('pic-border');</code></pre>
+    <pre><code contenteditable class = "javascript"> $(".main").addClass("img-border");</code></pre>
                     </ul>
                   </section>
 
@@ -415,16 +431,17 @@
                   <section>
                     <h3>Using jQuery's Id Selector</h3>
                     <ul>
-                      <li>Let's select the images with the id <span class="green">mainpic</span> by entering the following code in the JavaScript window. 
+                      <li>Let's select the images with the id <span class="green">content</span> by entering the following code in the JavaScript window. 
                       </li>
-                      <pre><code contenteditable class = "javascript"> $("#mainpic");
+                      <pre><code contenteditable class = "javascript"> $("#content");
 </code></pre>
-   <li>Next, we'll use jQuery's <span class="green">addClass()</span> to add the class <span class="green">float-right</span> to the matched element.
+   <li>Next, we'll use jQuery's <span class="green">addClass()</span> to add the class <span class="green">float-left</span> to the matched element.
      <ul><li>The CSS has previously defined the id selector <span class="green">float-left</span> to make any matched element float right.</li></ul> 
     </li>
-    <pre><code contenteditable class = "javascript"> $("#mainpic").addClass('float-right');</code></pre>
+    <pre><code contenteditable class = "javascript"> $("#content").addClass("float-left");</code></pre>
         
                     </ul>
+                        <p class="fragment">How would we apply this class to the <span class="green">image inside </span>of the #content div of #content itself?</p>
                   </section>
 
                   <section>
@@ -518,7 +535,7 @@
             -->
     <!-- Document Ready-->
             <section>
-              <h3>Document Ready How It Works</h3>
+              <h3>Document Ready - How It Works</h3>
               <div class = "left-align">
               <p>Webpages take time to load</p>
               <p class = "fragment">Almost always, you don't want the JavaScript to be called until the page is loaded</p>
@@ -542,15 +559,13 @@
               <h3>jQuery Methods</h3>
               <div class = "left-align">
                 <p>Now that we have talked about selectors, and the jQuery shorthand ($), we can tell you the foundation of all jQuery: <span class="green">$(selector).action();</span> </p>             
-                <p class = "fragment">jQuery has hundreds of actions that can be performed on any element <a href="http://api.jquery.com/" target="_blank">literally, hundreds</a>.</p>
-                <p class = "fragment">Those actions are called "methods."</p>
-                <p class = "fragment">Think of it like a verb in your statement.</p>
+                <p class = "fragment">jQuery has hundreds of "actions" that can be performed on any element <a href="http://api.jquery.com/" target="_blank">literally, hundreds</a>.</p>
+                <p class = "fragment">Those "actions" are called <span class="green">methods</span>, think of it like a verb in your statement.</p>
                 <p class = "fragment">As methods they are always called with dot notation:</p>
               </div>
               <div class = "fragment">
-                Method format
                 <pre><code contenteditable class = "javascript">
-            $(selector).action();     
+            $(selector)<span class="green">.method</span>();     
                 </code></pre>
               </div>
             </section>
@@ -563,16 +578,16 @@
             <!-- html values-->
             <section>
               <h3>Updating values and html</h3>
-              <div class = "fragment">
-                <pre><code contenteditable class = "html">
-      &lt;div class = "results">Boo!&lt;/div>         
+              <div class="fragment">
+                <pre><code contenteditable class="html">
+      &lt;div class="change-me">This is the third paragraph!&lt;/div>         
                 </code></pre>
               </div>
               <div class = "fragment">
                 Get and set html value
                 <pre><code contenteditable class = "javascript">
-                 $('#results').html();
-                 $('#results').html('&lt;p>New html!&lt;/p>');
+                 $(".change-me").html();
+                 $(".change-me").html("&lt;p>New html!&lt;/p>");
                 </code></pre>
               </div>
             </section>
@@ -582,19 +597,19 @@
               <h3>Append and Prepend</h3>
               <div class = "fragment">
                 <pre><code contenteditable class = "html">
-      &lt;div class = "results">Boo!&lt;/div>         
+      &lt;div class="change-me">&lt;/div>         
                 </code></pre>
               </div>
               <div class = "fragment">
                 Append html
                 <pre><code contenteditable class = "javascript">
-        $('#results').append('Additional html');
+        $('.change-me').append('More html after!');
                 </code></pre>
               </div>
               <div class = "fragment">
                 Prepend html
                 <pre><code contenteditable class = "javascript">
-        $('#results').prepend('Additional html (on top)');
+        $('.change-me').prepend('Even MORE html before');
                 </code></pre>
               </div>
             </section>
@@ -637,35 +652,76 @@
                       
                       <div class="fragment">If we've previously defined a CSS selector to set a size...
                         <pre><code contenteditable class = "javascript">
- .shrink {
-   width: 200px;
- }                                  </code></pre>
+.error {
+  color:red;
+  background:yellow;
+}                                  </code></pre>
                         
                         </div>
                     <div class="fragment">
                       We can leverage that class, and trigger the change by simply adding the class via jQuery:
                       <pre><code contenteditable class = "javascript">
-            $('#main').addClass('shrink');
+            $('p.second').addClass('error');
                       </code></pre>
                       </div>
                     
                     </section>
+                      
+                      <section>
+                          <h3>Showing and Hiding Elements</h3>
 
-                  <!-- 
+                          <div>
+                            We can hide an element by calling the action <span class="green">.hide()</span> on it. 
+                                                                       <pre><code contenteditable class = "javascript">
+      $(".main").hide();
+    </code></pre>
+                            </div>
+                            <div><span class="green">.hide()</span> happens instantly, but we can slow it down if we want. </div>
+                             <pre><code contenteditable class = "javascript">
+      $(".main").hide("slow");
+    </code></pre>
+<p class="fragment">Try both.</p>
+                        </section>
+                        
+                         <section>
+                              <h3>Showing and Hiding Elements</h3>
+
+                          
+<div>Let's modify the code we just wrote to make the buttons "Show image" and "Hide image" respond to a user's click.           
+  <pre><code contenteditable class = "javascript">
+      $(".show").click(
+        function() {
+          $(".main").show();
+        }
+      );
+      
+      $(".hide").click(
+        function() {
+          $(".main").hide();
+        }
+      );</code></pre>
+      <p>Just like with the .ready method, we can add a function to <span class="green">.click()</span>.
+                                </div>
+                            </section>     
+                               <!-- 
                     * Hiding and revealing elements
                     * Fading elements in and out
                   -->
                   
                    <section>
-                      <h3>Fading Elements Out</h3>
+                      <h3>Fading Elements In/Out</h3>
                       
                       <div class="fragment">
-                        We can fade out an element by calling the action <span class="green">fadeOut</span> on it.
+                        Instead of show/hide, we can also fade in an element by calling the method <span class="green">.fadeIn()</span>.
                                              <pre><code contenteditable class = "javascript">
-  $('#main').fadeOut();
+  $("body").fadeIn();
                                                        </code></pre>
-
                         </div>
+                  <div class="fragment"> Fading an element out is just as easy:
+                                             <pre><code contenteditable class = "javascript">
+  $(".h2").fadeOut();
+                                                       </code></pre>
+                                                     </div>
                     
                     </section>        
 
@@ -673,50 +729,52 @@
                         <h3>Fading Elements Out On Click</h3>
                         <p class="fragment">
                           We can fade out an element in response to a user clicking on it by adding the following jQuery:
-                                               <pre class="fragment"><code contenteditable class = "javascript">
-    $('#main').click(
+                          <pre class="fragment"><code contenteditable class="javascript">
+    $("#content img").click(
       function() {
         $(this).fadeOut();
       }
-    );</code></pre>
+    );
+  </code></pre>
                           </p>
 
                       </section>
-                      
-                      <section>
-                          <h3>Showing and Hiding Elements</h3>
 
-                          <div>
-                            We can hide an element by calling the action <span class="green">hide</span> on it. 
-                                                                       <pre><code contenteditable class = "javascript">
-  $('#main').click(
-    function() {
-      $(this).hide();
-    }
-  );</code></pre>
-                            </div>
-                            <div>Unlike <span class="green">fadeOut()</span>, which happens over time, <span class="green">hide()</span> happens instantly.</div>
-
-                        </section>
-                        
-                         <section>
-                              <h3>Showing and Hiding Elements</h3>
-
-                          
-<div>Add in the following jQuery to make the buttons "Show" and "Hide" respond appropriately.                                                                           <pre><code contenteditable class = "javascript">
-      $('#show').click(
+                    <section>
+                        <h3>Understadning $(this)</h3>
+                        <p>
+                       "This" is a special keyword in jQuery. Compare the <span class="green">.click()</span> code with the code we used to show/hide the first image buttons. What is different?
+                          <pre><code contenteditable class="javascript">
+    $(".main").click(
+      function() {
+        $(this).fadeOut();
+      }
+    );
+  </code></pre>
+                              <pre><code contenteditable class = "javascript">
+      $(".show").click(
         function() {
-          $('#main').show();
+          $(".main").show(300);
         }
       );
-      
-      $('#hide').click(
-        function() {
-          $('#main').hide();
-        }
-      );</code></pre>
-                                </div>
-                            </section>     
+    </code></pre>
+                          </p>
+
+                      </section>
+                 <section>
+                        <h3>Try this:</h3>
+                       <p>  Try to get the entire page to fade in. </p>
+                       <ul class="fragment">
+                        <li>First, you'll need to select the body tag</li>
+                        <li> Then, you'll need to apply two methods to it this, <span class="green">.hide() </span> and <span class="green">.fadeIn()</span></li>
+                        <li>You can string methods together, in the order that you want them to work:</li>
+                          <pre><code contenteditable class = "javascript">
+    $(selector).method().method();
+    </code></pre>
+
+                          </p>
+
+                      </section>
 
             <section>
               <h3>jQuery Plugins</h3>

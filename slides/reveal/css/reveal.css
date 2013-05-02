@@ -1214,4 +1214,8 @@ body {
 	visibility: hidden;
 }
 
+.reveal .small {
+	font-size:80%;
+	color:#ccc;
+}
 
